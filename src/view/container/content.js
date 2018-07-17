@@ -3,26 +3,27 @@ import { mainRouteMap } from '../../router/config';
 import { Route,Switch } from 'react-router-dom';
 
 const renderRouteComponent = routes => routes.map((route, index) => {
+    // 1.没有children时，直接返回路由 
+    // 2.有children时，处理成一维数组并返回路由
     let arr = [];
     if(route.children){
         arr = getRouter(route);
-        console.log(route)
-        console.log(routes)
+        delete route.children;
+        arr.unshift(<Route key={route.name} {...route} />)
+        console.log(arr)
+        return arr;
     }else{
         return <Route key={index} {...route} />
     }
-    
-    // return <Route key={index} {...route} />
 })
 
 function getRouter(routers) {
-    let returnObj = null;
     let resArr = [];
     resArr = [...routers.children];
-    // delete routers.children;
-    // resArr.push(routers);
-    console.log(resArr)
-    return null;
+    const router = resArr.map((item,index) => {
+        return <Route key={item.name} {...item} />
+    })
+    return router;
 }
 
 const mainRoute = renderRouteComponent(mainRouteMap);

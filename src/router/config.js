@@ -16,21 +16,21 @@ export const loyoutRouterMap = [
 
 export const mainRouteMap = [ {
     path:"/index",
-    name:"登录",
+    name:"index",
     exact:true,
     component:_import_views("login/login"),
     icon:"13",
-    title:"",
+    title:"登录",
     children:[{
         path:"/test",
-        name:"登录",
+        name:"test",
         exact:true,
         component:_import_views("test/test"),
         icon:"13",
         title:"测试"
     },{
         path:"/test1",
-        name:"登录",
+        name:"test1",
         exact:true,
         component:_import_views("test/test1"),
         icon:"13",
