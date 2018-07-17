@@ -1,0 +1,37 @@
+.container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-flow: row;
+    overflow: hidden;
+}
+.right-content{
+    display: flex;
+    flex-flow: column;
+    flex: 24;
+}
+.ele-hearder{
+    /* width: 100%; */
+    line-height: 55px;
+    height: 65px;
+    padding: 0 50px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ele-main{
+    height: 100%;
+    background: red;
+    position: relative;
+    margin: 24px 0 0 16px;
+    padding: 24px;
+    background: #fff;
+    overflow: scroll;
+}
+.ele-hearder .el-dropdown-link,.ele-hearder .el-icon-d-arrow-left{
+    cursor: pointer;
+}

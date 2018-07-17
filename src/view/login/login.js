@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-// import Menu from '../components/menu/Menu';
-import Router from '../router/index';
-class home extends Component {
+import {withRouter} from 'react-router-dom'
+
+@withRouter
+class login extends Component {
     constructor(props) {
         super(props);
 
@@ -15,16 +16,16 @@ class home extends Component {
 
     }
 
+    
+
     render() {
         return (
-            <Router />
-            // <Menu></Menu>
+            <div>
+                1231313
+            </div>
         );
     }
 }
 
-home.propTypes = {
 
-};
-
-export default home;
+export default login;

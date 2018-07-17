@@ -11,7 +11,9 @@ class App extends Component {
 	console.log(index)
   }
   render() {
-    return (<div>123</div>);
+    return (<div style={{width:'100%',height:'100%'}}>
+      		{this.props.children}
+    </div>);
   }
 }
 
