@@ -24,7 +24,7 @@ class index extends Component {
     render() {
         return (
             <div className="container">
-                    <div style={{width:'200px',maxWidth:"200px",minWidth:'200px'}}>
+                    <div style={{width:'200px',maxWidth:"200px",minWidth:'200px',background:'#324157'}}>
                         <Menucon></Menucon>
                     </div>
                     <div className="right-content">

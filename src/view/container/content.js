@@ -8,10 +8,10 @@ const renderRouteComponent = routes => routes.map((route, index) => {
     let arr = [];
     if(route.children){
         arr = getRouter(route);
+        console.log(route)
         delete route.children;
-        arr.unshift(<Route key={route.name} {...route} />)
-        console.log(arr)
-        return arr;
+        arr.push(<Route key={route.name} component={route.component} />)
+        return [...arr];
     }else{
         return <Route key={index} {...route} />
     }
@@ -26,7 +26,9 @@ function getRouter(routers) {
     return router;
 }
 
-const mainRoute = renderRouteComponent(mainRouteMap);
+let mainRoute = renderRouteComponent(mainRouteMap);
+mainRoute = [...mainRoute]
+console.log(mainRoute)
 class Content extends Component {
     constructor(props) {
         super(props);

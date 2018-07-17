@@ -18,16 +18,16 @@ export const mainRouteMap = [ {
     path:"/index",
     name:"index",
     exact:true,
-    component:_import_views("login/login"),
+    component:_import_views("test/test"),
     icon:"13",
     title:"登录",
     children:[{
         path:"/test",
-        name:"test",
-        exact:true,
+        // name:"test",
+        // exact:true,
         component:_import_views("test/test"),
-        icon:"13",
-        title:"测试"
+        // icon:"13",
+        // title:"测试"
     },{
         path:"/test1",
         name:"test1",
@@ -36,6 +36,18 @@ export const mainRouteMap = [ {
         icon:"13",
         title:"测试1"
     }]
+},{
+    path:"/login1",
+    name:"登录",
+    exact:true,
+    component:_import_views("login/login"),
+   
+},{
+    path:"/login2",
+    name:"登录",
+    exact:true,
+    component:_import_views("login/login"),
+   
 }]
 
 export const routes = loyoutRouterMap

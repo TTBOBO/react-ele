@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom'
+import PropTypes from 'prop-types';
 
-@withRouter
-class login extends Component {
+class jc extends Component {
     constructor(props) {
         super(props);
 
     }
 
     componentWillMount() {
-
-    }
-
-    componentDidMount() {
-
+        alert(11)
     }
 
     
@@ -21,11 +16,14 @@ class login extends Component {
     render() {
         return (
             <div>
-                12313134
+1231
             </div>
         );
     }
 }
 
+jc.propTypes = {
 
-export default login;
+};
+
+export default jc;
