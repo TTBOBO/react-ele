@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, HashRouter } from 'react-router-dom';
 import Index from '../view/container/index'
+import login from '../view/login/login'
 import App from '../App';
 
-const renderRouteComponent = routes => routes.map((route, index) => {
-    return <Route key={index} {...route} />
-})
 class index extends Component {
     render() {
         return (
@@ -14,18 +12,21 @@ class index extends Component {
                     <Route render={(location, history) => {
                         return (
                             <div style={{ width: '100%', height: '100%' }}>
-                                <Route render={props => {
+                                <Switch>
+                                    <Route render={props => {
                                         return <App {...props} >
                                             <Route render={() => {
                                                 return (
                                                     <Switch>
-                                                        <Route path="/" component={Index} />
+                                                        <Route path="/index" component={Index} />
+                                                        <Route path="/login" component={login} />
                                                         <Redirect from="*" to="/index" />
                                                     </Switch>
                                                 )
                                             }} />
                                         </App >
                                     }} />
+                                </Switch>
                             </div>
                         )
                     }}>
