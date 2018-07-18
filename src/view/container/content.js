@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { mainRouteMap } from '../../router/config';
 import { Route,Switch } from 'react-router-dom';
+import Test from '../../view/test/test'
 
-const renderRouteComponent = routes => routes.map((route, index) => {
+let resRoute = []
+const renderRouteComponent = routes => routes.forEach((route, index) => {
     // 1.没有children时，直接返回路由 
     // 2.有children时，处理成一维数组并返回路由
     let arr = [];
     if(route.children){
         arr = getRouter(route);
-        console.log(route)
         delete route.children;
         arr.push(<Route key={route.name} component={route.component} />)
-        return [...arr];
+        resRoute.push(...arr)
     }else{
-        return <Route key={index} {...route} />
+        resRoute.push(<Route key={route.name} {...route} />)
     }
 })
 
@@ -27,8 +28,7 @@ function getRouter(routers) {
 }
 
 let mainRoute = renderRouteComponent(mainRouteMap);
-mainRoute = [...mainRoute]
-console.log(mainRoute)
+mainRoute = [...resRoute]
 class Content extends Component {
     constructor(props) {
         super(props);
@@ -45,13 +45,10 @@ class Content extends Component {
     render() {
         return (
             <div>
-                <Route render={() => {
-                    return (
-                        <Switch>
-                            {mainRoute}
-                        </Switch>
-                    )
-                }} />
+                <Switch>
+                    {mainRoute}
+                    {/* <Route path="/index" component={Test} /> */}
+                </Switch>
             </div>
         );
     }

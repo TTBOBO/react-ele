@@ -188,24 +188,24 @@ const hm = {
 	 * @param {*} path      路由path
 	 * 当path 在routers存在时  返回当前的对象
 	 */
-	getRouter(routers, path) {
-		if (!path || !routers || !routers.length) {
-			return false;
-		}
-		let returnObj = null;
-		for (let item of routers) {
-			if (item.path == path) {
-				return item;
-			}
-			if (item.children) {
-				returnObj = hm.getRouter(item.children, path);
-				if (returnObj) {
-					return returnObj;
-				}
-			}
-		}
-		return null;
-	},
+	// getRouter(routers, path) {
+	// 	if (!path || !routers || !routers.length) {
+	// 		return false;
+	// 	}
+	// 	let returnObj = null;
+	// 	for (let item of routers) {
+	// 		if (item.path == path) {
+	// 			return item;
+	// 		}
+	// 		if (item.children) {
+	// 			returnObj = hm.getRouter(item.children, path);
+	// 			if (returnObj) {
+	// 				return returnObj;
+	// 			}
+	// 		}
+	// 	}
+	// 	return null;
+	// },
 	/**
 	 * 
 	 * @param {*} routers   所有路由
@@ -741,6 +741,32 @@ const hm = {
 		})
 
 		return obj;
+	},
+	renderRouteComponent:function(routes,Route,React){
+		console.log(routes)
+		let resRoute = []
+		routes.forEach((route, index) => {
+			// 1.没有children时，直接返回路由 
+			// 2.有children时，处理成一维数组并返回路由
+			let arr = [];
+			if(route.children){
+				arr = hm.getRouter(route);
+				delete route.children;
+				arr.push(<Route key={route.name} component={route.component} />)
+				resRoute.push(...arr)
+			}else{
+				resRoute.push(<Route key={route.name} {...route} />)
+			}
+		})
+		return resRoute;
+	},
+	getRouter:function (routers) {
+		let resArr = [];
+		resArr = [...routers.children];
+		const router = resArr.map((item,index) => {
+			return <Route key={item.name} {...item} />
+		})
+		return router;
 	}
 }
 

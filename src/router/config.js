@@ -23,11 +23,11 @@ export const mainRouteMap = [ {
     title:"登录",
     children:[{
         path:"/test",
-        // name:"test",
-        // exact:true,
+        name:"test",
+        exact:true,
         component:_import_views("test/test"),
-        // icon:"13",
-        // title:"测试"
+        icon:"13",
+        title:"测试"
     },{
         path:"/test1",
         name:"test1",
@@ -38,15 +38,16 @@ export const mainRouteMap = [ {
     }]
 },{
     path:"/login1",
-    name:"登录",
+    name:"login1",
     exact:true,
     component:_import_views("login/login"),
-   
+    title:"登录1"
 },{
     path:"/login2",
-    name:"登录",
+    name:"login2",
     exact:true,
     component:_import_views("login/login"),
+    title:"登录2"
    
 }]
 
