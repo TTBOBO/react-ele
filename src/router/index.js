@@ -7,12 +7,11 @@ import 'element-theme-default';
 
 class index extends Component {
     uploadRoute(route) {
-        alert(11)
-        console.log(route)
+        
     }
 
     componentDidMount() {
-        console.log(<Route path="/index" component={Index} />)
+
     }
 
     render() {

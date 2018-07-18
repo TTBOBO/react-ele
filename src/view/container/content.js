@@ -47,7 +47,6 @@ class Content extends Component {
             <div>
                 <Switch>
                     {mainRoute}
-                    {/* <Route path="/index" component={Test} /> */}
                 </Switch>
             </div>
         );
