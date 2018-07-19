@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { mainRouteMap } from '../../router/config';
 import { Route,Switch } from 'react-router-dom';
+import AuthRoute from './AuthRouter';
 import util from '../../assets/js/util';
+import Page404 from '../test/Page404'
 let mainRoute = []
 const renderRouteComponent = routes => routes.forEach((route, index) => {
     // 1.没有children时，直接返回路由 
@@ -9,12 +11,12 @@ const renderRouteComponent = routes => routes.forEach((route, index) => {
     let arr = [];
     if(route.children){
         arr = util.getRouter(route).map((item) =>{
-            return <Route exact={item.exact} key={item.name} component={item.component} path={item.path} />
+            return <AuthRoute exact={item.exact} key={item.name} component={item.component} path={item.path} />
         });
-        arr.push(<Route exact={route.exact} key={route.name} path={route.path}  component={route.component} />)
+        arr.push(<AuthRoute exact={route.exact} key={route.name} path={route.path}  component={route.component} />)
         mainRoute.push(...arr)
     }else{
-        mainRoute.push(<Route exact={route.exact} key={route.name} path={route.path} component={route.component} />)
+        mainRoute.push(<AuthRoute exact={route.exact} key={route.name} path={route.path} component={route.component} />)
     }
 })
 
@@ -38,6 +40,7 @@ class Content extends Component {
         return (
             <Switch>
                 {mainRoute}
+                <Route page="/app/Page404" component={Page404} exact />
             </Switch>
         );
     }

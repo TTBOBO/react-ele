@@ -1284,6 +1284,7 @@ let utils = {
 		return {
 			path:path,  //默认展开的menuitem index  =>  path
 			defaultActive:firstItem ? menuList[firstindex].children[0].path : (path.length > 0 ? path[0] : '')   //展开一级菜单时，默认选中子菜单第一个  反之选中指定菜单
+			// defaultActive:firstItem ? (menuList[firstindex].children ? menuList[firstindex].children[0].path : menuList[firstindex].path) : (path.length > 0 ? path[0] : '')   //展开一级菜单时，默认选中子菜单第一个  反之选中指定菜单
 		};
 		
 	}

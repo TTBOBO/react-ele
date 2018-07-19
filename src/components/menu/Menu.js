@@ -18,7 +18,6 @@ class Menucon extends Component {
     componentWillMount() {
         // this.getMenu();
         let menuOption  = util.getOpenMenu(this.props.initMentList,this.props.location.pathname);
-        console.log(menuOption)
         this.setState({
             defaultActive:menuOption.defaultActive,
             defaultOpeneds:menuOption.path

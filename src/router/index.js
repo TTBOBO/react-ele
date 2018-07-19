@@ -3,6 +3,7 @@ import { Route, Switch, Redirect, HashRouter } from 'react-router-dom';
 import connect from '../store/connnect'
 import Index from '../view/container/index'
 import login from '../view/login/login';
+import Page404 from '../view/test/Page404'
 import util from '../assets/js/util';
 import {mainRouteMap} from './config' 
 import 'element-theme-default';
@@ -31,6 +32,7 @@ class index extends Component {
                             <Route exact path="/" render={() => <Redirect to="/app/index" push />} />
                             <Route path="/app" component={Index} />
                             <Route exact  path="/login" component={login} />
+                            <Route component={Page404} />
                         </Switch>
                 </HashRouter>
             </div>
