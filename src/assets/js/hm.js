@@ -764,9 +764,12 @@ const hm = {
 		let resArr = [];
 		resArr = [...routers.children];
 		const router = resArr.map((item,index) => {
-			return <Route key={item.name} {...item} />
+			return item;
 		})
 		return router;
+	},
+	getAccessRouter(routers){
+		
 	}
 }
 

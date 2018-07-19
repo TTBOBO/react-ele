@@ -8,7 +8,7 @@ class jc extends Component {
     }
 
     componentWillMount() {
-        alert(11)
+        // alert(11)
     }
 
     
@@ -16,7 +16,7 @@ class jc extends Component {
     render() {
         return (
             <div>
-1231
+12311
             </div>
         );
     }

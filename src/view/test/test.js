@@ -19,7 +19,7 @@ class test extends Component {
     render() {
         return (
             <div>
-                    2
+                    首页
             </div>
         );
     }
