@@ -1188,7 +1188,7 @@ let utils = {
 		return router;
 	},
 	getAccessRouter(routers) {
-		var access = [1, 2,5];
+		var access = [1,2,5];
 		let menuList = [];
 		routers.forEach((item, index) => {
 			if (item.access) {
@@ -1198,8 +1198,9 @@ let utils = {
 					} else if(item.children && item.children.length > 1){
 						let len = menuList.push(item);   //返回长度
 						let childrenArr = [];
-						childrenArr = item.children.filter((child) => {
-							if (child.access && (this.showRouter(child.access, access) || this.getSessionStorage('role_id') == "*")) {
+						childrenArr = item.children.filter((child) => {   //子菜单  有access  并有权限返回  以及   没有access  直接返回
+							console.log(child)
+							if ((child.access && (this.showRouter(child.access, access)) || this.getSessionStorage('role_id') == "*" || !child.access)) {
 								return child;
 							}
 							
@@ -1217,7 +1218,7 @@ let utils = {
 					let len = menuList.push(item);
 					let childrenArr = item.children.filter((child) => {
 						if (child.access !== undefined) {
-							if (this.showRouter(child.access, access) || this.getSessionStorage('role_id') == "*") {   //当路由和权限 存在并且相等时 返回当前路由
+							if (this.showRouter(child.access, access) || this.getSessionStorage('role_id') == "*" || !child.access) {   //当路由和权限 存在并且相等时 返回当前路由
 								return child;
 							}
 						} else {
@@ -1281,10 +1282,11 @@ let utils = {
 					}
 				}
 		})
+		// console.log(firstItem)
 		return {
 			path:path,  //默认展开的menuitem index  =>  path
-			defaultActive:firstItem ? menuList[firstindex].children[0].path : (path.length > 0 ? path[0] : '')   //展开一级菜单时，默认选中子菜单第一个  反之选中指定菜单
-			// defaultActive:firstItem ? (menuList[firstindex].children ? menuList[firstindex].children[0].path : menuList[firstindex].path) : (path.length > 0 ? path[0] : '')   //展开一级菜单时，默认选中子菜单第一个  反之选中指定菜单
+			// defaultActive:firstItem ? menuList[firstindex].children[0].path : (path.length > 0 ? path[0] : '')   //展开一级菜单时，默认选中子菜单第一个  反之选中指定菜单
+			defaultActive:firstItem ? (menuList[firstindex].children ? menuList[firstindex].children[0].path : menuList[firstindex].path) : (path.length > 0 ? path[0] : '')   //展开一级菜单时，默认选中子菜单第一个  反之选中指定菜单
 		};
 		
 	}

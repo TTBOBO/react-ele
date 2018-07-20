@@ -37,7 +37,7 @@ class Menucon extends Component {
     }
 
     selectOption(index){
-        console.log(index)
+        this.props.history.push(index);
     }
 
     getMenu(){

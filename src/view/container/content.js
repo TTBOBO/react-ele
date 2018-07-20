@@ -10,6 +10,7 @@ const renderRouteComponent = routes => routes.forEach((route, index) => {
     // 2.有children时，处理成一维数组并返回路由
     let arr = [];
     if(route.children){
+        console.log(util.getRouter(route))
         arr = util.getRouter(route).map((item) =>{
             return <AuthRoute exact={item.exact} key={item.name} component={item.component} path={item.path} />
         });
