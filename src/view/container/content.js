@@ -10,9 +10,8 @@ const renderRouteComponent = routes => routes.forEach((route, index) => {
     // 2.有children时，处理成一维数组并返回路由
     let arr = [];
     if(route.children){
-        console.log(util.getRouter(route))
         arr = util.getRouter(route).map((item) =>{
-            return <AuthRoute exact={item.exact} key={item.name} component={item.component} path={item.path} />
+            return <AuthRoute exact={item.exact} key={item.name}  path={item.path} component={item.component} />
         });
         arr.push(<AuthRoute exact={route.exact} key={route.name} path={route.path}  component={route.component} />)
         mainRoute.push(...arr)
@@ -22,7 +21,6 @@ const renderRouteComponent = routes => routes.forEach((route, index) => {
 })
 
 renderRouteComponent(mainRouteMap);
-
 class Content extends Component {
     constructor(props) {
         super(props);

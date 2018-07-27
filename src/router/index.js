@@ -5,9 +5,7 @@ import Index from '../view/container/index'
 import login from '../view/login/login';
 import Page404 from '../view/test/Page404'
 import util from '../assets/js/util';
-import {mainRouteMap} from './config' 
 import 'element-theme-default';
-util.getAccessRouter(mainRouteMap)
 
 @connect
 class index extends Component {
@@ -16,9 +14,6 @@ class index extends Component {
     }
     componentWillMount(){
         this.props.getMenu('INITMENU');
-        setTimeout(() =>{
-            console.log(this.props.initMentList)
-        })
     }
     componentDidMount() {
        

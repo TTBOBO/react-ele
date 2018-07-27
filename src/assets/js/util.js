@@ -1199,7 +1199,7 @@ let utils = {
 						let len = menuList.push(item);   //返回长度
 						let childrenArr = [];
 						childrenArr = item.children.filter((child) => {   //子菜单  有access  并有权限返回  以及   没有access  直接返回
-							console.log(child)
+							
 							if ((child.access && (this.showRouter(child.access, access)) || this.getSessionStorage('role_id') == "*" || !child.access)) {
 								return child;
 							}

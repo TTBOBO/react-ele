@@ -7,7 +7,6 @@ const state = {
     userinfo:"",
     menuList:[]
 }
-console.log(type);
 function getUserInfo(userinfo = state.userinfo,action){
     switch (action.type) {
 		case type.USERINFO:

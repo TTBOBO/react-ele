@@ -20,6 +20,7 @@ export const mainRouteMap = [,{
     icon:"13",
     title:"首页",
     access:5,
+    exact:true,
     
 }, {
     path:"/app/index3",
