@@ -1260,6 +1260,20 @@ let utils = {
 			return false;
 		}
 	},
+	getHandType:function (data, obj) {
+		if(data == "未发布"){
+			return obj[1];
+		}else if(data == "已发布"){
+			return obj[2];
+		}else if(data == "审核中"){
+			return obj[3];
+		}else if(data == "审核失败"){
+			return obj[4];
+		}else{
+			return obj[data] || "未发布";
+		}
+		
+	},
 	/**
 	 * 
 	 * @param {*} menuList  所有有权限的路由

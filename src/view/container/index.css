@@ -30,8 +30,23 @@
     margin: 24px 0 0 16px;
     padding: 24px;
     background: #fff;
-    overflow: scroll;
+    overflow: auto;
+    overflow-x: hidden;
 }
 .ele-hearder .el-dropdown-link,.ele-hearder .el-icon-d-arrow-left{
     cursor: pointer;
+}
+.cardcon{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.carditem{
+    width: 400px;
+}
+.carditem .image{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
