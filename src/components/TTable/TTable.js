@@ -115,6 +115,9 @@ class TTable extends Component {
     changeOpt(e) {
         console.log(e);
     }
+    onSelectAll(res){
+        console.log(res);
+    }
 
 
     render() {
@@ -125,6 +128,7 @@ class TTable extends Component {
                     columns={this.state.columns}
                     data={this.state.data}
                     stripe={true}
+                    onSelectAll={this.onSelectAll.bind(this)}
                 />
                 <Page pageOpts={this.state.pageOpt} changeOpt={(e) => this.changeOpt(e)}></Page>
             </div>

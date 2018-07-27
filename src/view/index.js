@@ -18,6 +18,7 @@ class index extends Component {
             }],
             dataOption:{
                 columns: [
+                    {type: 'selection'},
                     {label: "日期",prop: "date", width: 180,type:"time"},
                     {label: "姓名",prop: "name",width: 180},
                     {label: "地址",prop: "address"},

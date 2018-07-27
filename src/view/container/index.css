@@ -50,3 +50,6 @@
     height: 200px;
     object-fit: cover;
 }
+.el-checkbox{
+    color: #fff !important;
+}
