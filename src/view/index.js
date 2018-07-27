@@ -41,7 +41,7 @@ class index extends Component {
     componentDidMount() {
 
     }
-    openInfo1(e){
+    openInfo(e){
         console.log(e);
     }
     render() {
