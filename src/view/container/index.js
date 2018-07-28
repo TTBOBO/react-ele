@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Menucon from '../../components/menu/Menu';
+import Menucon from '../../components/menu/Menucon';
+import { Layout , Menu,Icon} from 'antd';
 import {Dropdown} from "element-react"
 import Content from './content'
 import './index.css'

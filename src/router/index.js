@@ -5,7 +5,8 @@ import Index from '../view/container/index'
 import login from '../view/login/login';
 import Page404 from '../view/test/Page404'
 import util from '../assets/js/util';
-import 'element-theme-default';
+// import 'element-theme-default';
+import 'antd/dist/antd.css';
 
 @connect
 class index extends Component {

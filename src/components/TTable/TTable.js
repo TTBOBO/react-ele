@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Table, Button, Message, MessageBox } from "element-react"
+import { Table, Button, Message, MessageBox,Select } from "element-react"
 import Page from '../page/page'
 import util from '../../assets/js/util';
+import './tabel.css'
 
 class TTable extends Component {
     constructor(props) {
@@ -16,21 +17,21 @@ class TTable extends Component {
             },
             columns: [],
             data: [{
-                date: '2016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
+                date: '1532745035',
+                name: '1',
+                address: 'https://file.iviewui.com/dist/3e7ccd0fec857c20cce63871fe690812.jpg'
             }, {
-                date: '2016-05-04',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1517 弄'
+                date: '1532745035',
+                name: '2',
+                address: 'https://file.iviewui.com/dist/3e7ccd0fec857c20cce63871fe690812.jpg'
             }, {
-                date: '2016-05-01',
-                name: '王小虎',
-                address: '3'
+                date: '1532745035',
+                name: '3',
+                address: 'https://file.iviewui.com/dist/3e7ccd0fec857c20cce63871fe690812.jpg'
             }, {
-                date: '2016-05-03',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1516 弄'
+                date: '1532745035',
+                name: '0',
+                address: 'https://file.iviewui.com/dist/3e7ccd0fec857c20cce63871fe690812.jpg'
             }],
             defaultFilter: {}
         }
@@ -38,9 +39,6 @@ class TTable extends Component {
 
     componentWillMount() {
         this.initTable();
-        this.setState({
-            columns: this.props.dataOption.columns
-        })
     }
     initTable() {
         console.log(this.props.dataOption);
@@ -59,8 +57,36 @@ class TTable extends Component {
                 item.render = (data, column) => {
                     return this.getToolBtn(data, column);
                 }
+            }else if(item.type == 'img'){
+                item.render = (data,column) =>{
+                    return (<div>
+                        <img src={data[column.prop]} style={{width:"50px",height:"50px","objectFit": "cover"}} />
+                    </div>)
+                }
+            }else if(item.type == 'time'){
+                item.render = (data,column) =>{
+                    return (<span>
+                        {util.time.getNowTime(data[column.prop], item.s)}
+                    </span>)
+                }
+            }else if(item.type == "select"){
+               
+                item.render = (data,column) =>{
+                    console.log(11111111)
+                    // console.log(item.selectOPtion)
+                    return ( <Select value={data[column.prop]} onChange={this.tSelChange.bind(this)}>
+                        {
+                          item.selectOPtion.map(el => {
+                            return <Select.Option key={el.value} label={el.label} value={el.value} />
+                          })
+                        }
+                      </Select>)
+                }
             }
         });
+        this.setState({
+            columns: this.props.dataOption.columns
+        })
     }
     getToolBtn(data, column) {
         let colorBtn = {
@@ -117,6 +143,10 @@ class TTable extends Component {
     }
     onSelectAll(res){
         console.log(res);
+    }
+    //table select change 事件
+    tSelChange(e){
+        console.log(e);
     }
 
 
