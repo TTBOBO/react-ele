@@ -14,7 +14,7 @@ class Menucon extends Component {
         super(props);
         this.state = {
             defaultActive:"",
-            defaultOpeneds:[],
+            defaultOpeneds:"",
             openKeys: ['sub1'],
         }
     }
@@ -24,9 +24,10 @@ class Menucon extends Component {
         // this.getMenu();
         let menuOption  = util.getOpenMenu(this.props.initMentList,this.props.location.pathname);
         this.setState({
-            defaultActive:menuOption.defaultActive,
-            defaultOpeneds:menuOption.path
+            defaultActive:menuOption.path,
+            defaultOpeneds:menuOption.path[0]
         })
+        console.log(this.state.defaultActive)
 
         // console.log(this.props)
     }
@@ -42,55 +43,35 @@ class Menucon extends Component {
     }
 
     selectOption(index){
-        this.props.history.push(index);
+        this.props.history.push(index.key);
     }
 
     getMenu(){
         let resMenu = null;
         resMenu = this.props.initMentList.map((item,index) => {
             if(item.children && item.children.length > 0){
-                return(<Menu.SubMenu key={`'${index}'`} index={`${item.path}`} title={<span>{item.icon ? <i className={'el-icon-'+item.icon}></i> : ""}{item.title}</span>}>
+                return(<Menu.SubMenu key={`${item.path}`} index={`${item.path}`} title={<span>{item.icon ? <i className={'el-icon-'+item.icon}></i> : ""}{item.title}</span>}>
                     {item.children.map((child,_index) => {
-                        return (<Menu.Item  index={child.path} key={index+'-'+_index}>
+                        return (<Menu.Item  index={child.path} key={child.path}>
                             <span>{child.icon ? <i className={'el-icon-'+child.icon}></i> : ""}{child.title}</span>
                             </Menu.Item>)
                     })}
                 </Menu.SubMenu>)
             }else{
-                return (<Menu.Item key={`'${index}'`} index={`${item.path}`}>{<span>{item.icon ? <i className={'el-icon-'+item.icon}></i> : ""}{item.title}</span>}</Menu.Item>)
+                return (<Menu.Item key={`${item.path}`} index={`${item.path}`}>{<span>{item.icon ? <i className={'el-icon-'+item.icon}></i> : ""}{item.title}</span>}</Menu.Item>)
             }
         })
         return resMenu;
     }
-    onOpenChange = (openKeys) => {
-        const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
-        if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-          this.setState({ openKeys });
-        } else {
-          this.setState({
-            openKeys: latestOpenKey ? [latestOpenKey] : [],
-          });
-        }
-      }
     render() {
 
         
-
+        // onClose={this.onClose.bind(this)}
         return (
             <div>
                 <Layout className="tac">
                     <Layout span={24}>
-                        <Menu mode="inline" defaultOpeneds={this.state.defaultOpeneds} defaultActive={this.state.defaultActive} theme="dark" onSelect={this.selectOption.bind(this)} className="el-menu-vertical-demo" onOpen={this.onOpen.bind(this)} onClose={this.onClose.bind(this)}>
-                            {/* <Menu.SubMenu index="1" title={<span><i className="el-icon-message"></i>导航一</span>}>
-                                <Menu.Item index="1-1">选项1</Menu.Item>
-                                <Menu.Item index="1-2">选项2</Menu.Item>
-                                <Menu.Item index="1-3">选项3</Menu.Item>
-                            </Menu.SubMenu>
-                            <Menu.Item index="2"><i className="el-icon-menu"></i>导航二</Menu.Item>
-                            <Menu.Item index="3"><i className="el-icon-setting"></i>导航三</Menu.Item> */}
-                            {/* {this.getMenu()} */}
-                        {/* </Menu> */}
-                        {/* <Menu> */}
+                        <Menu mode="inline" defaultOpenKeys={this.state.defaultOpeneds} defaultSelectedKeys={this.state.defaultActive} theme="dark" onSelect={this.selectOption.bind(this)} className="el-menu-vertical-demo" onOpenChange={this.onOpen.bind(this)} >
                             {this.getMenu()}
                         </Menu>
                     </Layout>
